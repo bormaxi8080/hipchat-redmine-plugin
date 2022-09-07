@@ -1,0 +1,17 @@
+redmine:
+  container_name: some-redmine
+  build: ./
+  ports:
+      - "3000:3000"
+  volumes:
+      - "../../:/usr/src/redmine/plugins/"
+      - "../log:/usr/src/redmine/log/"
+
+postgres:
+  container_name: some-postgres
+  image: postgres
+  ports:
+    - "5432:5432"
+  environment:
+    - "POSTGRES_PASSWORD=123456"
+    - "POSTGRES_USER=redmine"
